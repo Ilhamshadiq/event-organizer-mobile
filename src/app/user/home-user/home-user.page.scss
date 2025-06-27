@@ -1,0 +1,77 @@
+.bottom-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 0;
+  box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #444;
+}
+
+.nav-button ion-icon {
+  font-size: 40px;
+  margin-bottom: 2px;
+}
+.event-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.event-header {
+  margin-bottom: 12px;
+}
+
+.event-title {
+  font-size: 20px;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.event-subtitle {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 4px 0 0;
+}
+
+.event-body p {
+  font-size: 14px;
+  margin: 6px 0;
+  color: #444;
+}
+
+ion-button {
+  margin-top: 12px;
+  border-radius: 12px;
+}
+ion-toolbar {
+  --background: #ffffff !important;
+  color: #2c3e50;
+}
+
+ion-searchbar {
+  padding: 0 10px;
+  --background: #ffffff !important;
+  color: #2c3e50;
+}
+.event-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar class="white-header">
+    <ion-title class="ion-text-center">Statistik Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding content-with-header">
+  <div *ngIf="events.length > 0; else kosong">
+    <div class="event-card" *ngFor="let event of events">
+      <h2>{{ event.nama }}</h2>
+      <p>{{ event.waktu_mulai | date: 'dd MMMM yyyy' }}</p>
+      <ion-button [routerLink]="['/admin/cart-js', event.id]" expand="block" size="small">
+        Detail
+      </ion-button>
+    </div>
+  </div>
+
+  <ng-template #kosong>
+    <ion-text color="medium">Tidak ada event tersedia.</ion-text>
+  </ng-template>
+</ion-content>
+
+<app-footer-navbar></app-footer-navbar>

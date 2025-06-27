@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Event yang Kamu Hadiri</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div *ngFor="let event of events" class="history-card">
+    <div class="history-info">
+      <h2 class="event-name">{{ event.event.nama }}</h2>
+      <p><strong>Tanggal:</strong> {{ event.event.waktu_mulai | date:'dd MMMM yyyy' }}</p>
+      <p><strong>Lokasi:</strong> {{ event.event.lokasi }}</p>
+
+<ion-button
+  expand="block"
+  color="primary"
+  *ngIf="event.event.mengeluarkan_sertifikat"
+  (click)="lihatSertifikat(event.id)"
+>
+  Lihat Sertifikat
+</ion-button>
+
+
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <div class="bottom-navbar">
+    <div class="nav-button" routerLink="/user/home">
+      <ion-icon name="home-outline"></ion-icon>
+    </div>
+    <div class="nav-button" routerLink="/user/ticket">
+      <ion-icon name="ticket-outline"></ion-icon>
+    </div>
+    <div class="nav-button" routerLink="/user/history-event">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="nav-button" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </div>
+  </div>
+</ion-footer>

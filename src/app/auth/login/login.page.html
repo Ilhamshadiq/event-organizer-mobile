@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true" class="ion-padding login-page">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2 class="title">Sign In</h2>
+      <p class="subtitle">Welcome back! Please login to your account.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+        <ion-item lines="inset" class="input-item">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input formControlName="email" placeholder="Email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item lines="inset" class="input-item">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input formControlName="password" placeholder="Password" type="password"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" class="login-button">Login</ion-button>
+      </form>
+
+      <p class="bottom-text">
+        Don't have an account?
+        <a routerLink="/register">Register here</a>
+      </p>
+    </div>
+  </div>
+</ion-content>

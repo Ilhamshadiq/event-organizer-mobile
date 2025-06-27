@@ -1,0 +1,66 @@
+.register-page {
+  background: #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .register-wrapper {
+    width: 100%;
+    max-width: 420px;
+    margin: auto;
+    padding-top: 60px;
+  }
+
+  .register-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    text-align: center;
+
+    .title {
+      margin-bottom: 4px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .input-item {
+      border-radius: 8px;
+      margin-bottom: 16px;
+      --background: #f8f9fa;
+      --color: #000;
+      --placeholder-color: #aaa;
+    }
+
+    ion-icon {
+      color: #3b82f6;
+    }
+
+    ion-button {
+      margin-top: 20px;
+      --background: #3b82f6;
+      --color: #fff;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .bottom-text {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #444;
+
+      a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">🎫 Tiket Saya</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div *ngIf="tickets.length === 0">Belum ada tiket.</div>
+
+    <div *ngFor="let ticket of tickets" class="ticket-card">
+      <div class="ticket-content">
+        <!-- Jika sudah bayar, tampilkan QR -->
+        <ng-container *ngIf="ticket.status_pembayaran === 'diterima'; else uploadSection">
+          <qrcode
+            [qrdata]="'http://127.0.0.1:8000/api/participant/' + ticket.id + '/status'"
+            [width]="160"
+            [errorCorrectionLevel]="'M'">
+          </qrcode>
+        </ng-container>
+
+        <!-- Jika belum bayar, tampilkan form upload -->
+        <ng-template #uploadSection>
+          <input
+            type="file"
+            (change)="handleFileUpload($event, ticket.id)"
+            accept="image/*"
+            class="file-input"
+          />
+        </ng-template>
+
+        <!-- Info Event -->
+        <div class="ticket-info">
+          <h2 class="ticket-title">{{ ticket.event.nama }}</h2>
+          <p><strong>Tanggal:</strong> {{ ticket.event.waktu_mulai | date:'dd MMMM yyyy' }}</p>
+          <p><strong>Status:</strong> {{ ticket.status_pembayaran }}</p>
+        </div>
+      </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="bottom-navbar">
+    <div class="nav-button" routerLink="/user/home">
+      <ion-icon name="home-outline"></ion-icon>
+    </div>
+    <div class="nav-button" routerLink="/user/ticket">
+      <ion-icon name="ticket-outline"></ion-icon>
+    </div>
+    <div class="nav-button" routerLink="/user/history-event">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="nav-button" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </div>
+  </div>
+</ion-footer>

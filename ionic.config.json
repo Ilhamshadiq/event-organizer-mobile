@@ -1,0 +1,7 @@
+{
+  "name": "eo-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

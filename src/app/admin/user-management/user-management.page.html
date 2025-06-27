@@ -1,0 +1,57 @@
+<ion-header>
+  <!-- Search Bar -->
+<ion-searchbar 
+  placeholder="Cari peserta..."
+  [(ngModel)]="searchTerm"
+  showClearButton="always"
+  debounce="300">
+</ion-searchbar>
+
+
+  <!-- Dropdown Event (bisa ditambahkan logika (ionChange) nanti) -->
+<ion-toolbar>
+<ion-select [(ngModel)]="selectedEvent" (ionChange)="onEventChange($event)">
+  <ion-select-option value="all">Semua Event</ion-select-option>
+  <ion-select-option *ngFor="let event of eventList" [value]="event.id">
+    {{ event.nama }}
+  </ion-select-option>
+</ion-select>
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding content-with-header">
+<div *ngFor="let p of getFilteredPeserta()" class="user-card">
+  <div class="user-info">
+    <h2 class="user-name">Nama: {{ p.user.name }}</h2>
+    <p class="user-email">Email: {{ p.user.email }}</p>
+    <p class="user-event">Event: {{ p.event?.nama }}</p>
+
+    <div class="user-actions">
+      <!-- Dropdown konfirmasi pembayaran -->
+      <ion-item class="payment-status-item">
+        <ion-label color="light">Status</ion-label>
+        <ion-select
+          interface="popover"
+          [(ngModel)]="p.status_pembayaran"
+          (ionChange)="konfirmasiPembayaran(p.id, p.status_pembayaran)">
+          <ion-select-option value="pending">Pending</ion-select-option>
+          <ion-select-option value="diterima">Diterima</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Tombol lihat bukti -->
+      <ion-button
+        class="lihat-bukti-button"
+        fill="outline"
+        color="primary"
+        *ngIf="p.bukti_pembayaran"
+        [href]="'http://localhost:8000/storage/uploads/bukti-pembayaran/' + p.bukti_pembayaran"
+        target="_blank">
+        Bukti
+      </ion-button>
+    </div>
+  </div>
+</div>  
+  <!-- Footer -->
+  <app-footer-navbar></app-footer-navbar>
+</ion-content>

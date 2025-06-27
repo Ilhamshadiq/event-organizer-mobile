@@ -1,0 +1,25 @@
+.event-detail-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: black;
+}
+
+.event-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.event-info {
+  padding: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: black;
+}
+
+ion-title {
+  text-align: center;
+  font-weight: bold;
+}

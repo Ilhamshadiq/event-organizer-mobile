@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Statistik Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Info Kegiatan -->
+  <div class="event-info-card" *ngIf="statisticData">
+    <h2>{{ statisticData.event }}</h2>
+    <p><strong>Kuota:</strong> {{ statisticData.kuota }}</p>
+    <p><strong>Jumlah Pendaftar:</strong> {{ statisticData.jumlah_pendaftar }}</p>
+    <p><strong>Hadir:</strong> {{ statisticData.hadir }}</p>
+    <p><strong>Tidak Hadir:</strong> {{ statisticData.tidak_hadir }}</p>
+    <p><strong>Persentase Kuota Terisi:</strong> {{ statisticData.persentase_kuota_terisi }}</p>
+  </div>
+
+  <!-- Grafik Chart.js -->
+  <canvas id="eventChart" *ngIf="statisticData"></canvas>
+</ion-content>

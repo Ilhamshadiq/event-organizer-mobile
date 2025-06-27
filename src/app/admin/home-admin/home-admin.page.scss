@@ -1,0 +1,67 @@
+.bottom-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 0;
+  box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #444;
+}
+
+.nav-button ion-icon {
+  font-size: 40px;
+  margin-bottom: 2px;
+}
+.admin-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.event-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000000;
+}
+
+.mb-3 {
+  margin-bottom: 16px;
+}
+p{
+  color: black;
+}
+ion-button {
+  margin-top: 12px;
+  border-radius: 12px;
+}
+ion-toolbar {
+  --background: #ffffff !important;
+  color: #2c3e50;
+}
+
+ion-searchbar {
+  padding: 0 10px;
+  --background: #ffffff !important;
+  color: #2c3e50;
+}
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}

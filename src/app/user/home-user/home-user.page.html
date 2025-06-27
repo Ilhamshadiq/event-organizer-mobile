@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="Cari event..."
+      (ionInput)="filterEvent($event)"
+      showClearButton="always">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ng-container *ngIf="filteredEvents.length > 0; else noEvents">
+    <div class="event-card" *ngFor="let event of filteredEvents">
+      <img *ngIf="event?.foto" [src]="getImageUrl(event.foto)" alt="Foto Event" />
+      <div class="event-header">
+        <h2 class="event-title">{{ event.nama }}</h2>
+        <p class="event-subtitle">{{ event.jenis | titlecase }} - {{ event.lokasi }}</p>
+      </div>
+      <div class="event-body">
+        <p><strong>Deskripsi:</strong> {{ event.deskripsi }}</p>
+        <p>
+          <strong>Waktu:</strong><br>
+          {{ event.waktu_mulai | date:'dd MMMM yyyy, HH:mm' }} -
+          {{ event.waktu_selesai | date:'HH:mm' }}
+        </p>
+        <p><strong>Kuota:</strong> {{ event.kuota }} peserta</p>
+        <p><strong>Sertifikat:</strong> {{ event.mengeluarkan_sertifikat ? '✅ Tersedia' : '❌ Tidak tersedia' }}</p>
+      <ion-button expand="block" color="primary" [routerLink]="['/event-detail', event.id]">
+        Lihat Detail
+      </ion-button>
+      <ion-button expand="block" color="success" (click)="daftarEvent(event.id)">
+        Daftar Event
+      </ion-button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noEvents>
+    <ion-text color="medium">Tidak ada event ditemukan.</ion-text>
+  </ng-template>
+
+  <!-- footer -->
+<ion-footer>
+  <div class="bottom-navbar">
+    <div class="nav-button" routerLink="/user/home">
+      <ion-icon name="home-outline"></ion-icon>
+    </div>
+    <div class="nav-button" routerLink="/user/ticket">
+      <ion-icon name="ticket-outline"></ion-icon>
+    </div>
+    <div class="nav-button" routerLink="/user/history-event">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="nav-button" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </div>
+  </div>
+</ion-footer>
+
+</ion-content>

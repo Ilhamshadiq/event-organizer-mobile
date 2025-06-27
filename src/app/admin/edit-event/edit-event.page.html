@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">Edit Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
+    
+    <ion-item>
+      <ion-label position="stacked">Nama Event</ion-label>
+      <ion-input formControlName="nama" placeholder="Webinar Laravel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Deskripsi</ion-label>
+      <ion-textarea formControlName="deskripsi" placeholder="Pelatihan Laravel dasar."></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Lokasi</ion-label>
+      <ion-input formControlName="lokasi" placeholder="Zoom"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Jenis</ion-label>
+      <ion-select formControlName="jenis">
+        <ion-select-option value="gratis">Gratis</ion-select-option>
+        <ion-select-option value="berbayar">Berbayar</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Waktu Mulai</ion-label>
+      <ion-datetime formControlName="waktu_mulai" display-format="YYYY-MM-DD HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Waktu Selesai</ion-label>
+      <ion-datetime formControlName="waktu_selesai" display-format="YYYY-MM-DD HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Kuota</ion-label>
+      <ion-input type="number" formControlName="kuota" placeholder="100"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Keluar Sertifikat</ion-label>
+      <ion-toggle formControlName="mengeluarkan_sertifikat"></ion-toggle>
+    </ion-item>
+
+<!-- <ion-item>
+  <ion-label position="stacked">Upload Banner</ion-label>
+  <input type="file" (change)="onImageChange($event)">
+</ion-item> -->
+
+<ion-item>
+  <ion-label position="stacked">Upload Foto</ion-label>
+  <input type="file" (change)="onFotoChange($event)">
+</ion-item>
+
+
+    <!-- <ion-item>
+      <ion-label position="stacked">Form Pendaftaran</ion-label>
+      <ion-textarea formControlName="form_pendaftaran" placeholder="<input name='nama' required>"></ion-textarea>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label>Aktifkan Event</ion-label>
+      <ion-toggle formControlName="is_active"></ion-toggle>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="eventForm.invalid">Simpan Event</ion-button>
+  </form>
+</ion-content>
