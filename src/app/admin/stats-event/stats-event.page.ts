@@ -12,19 +12,19 @@ export class StatsEventPage implements OnInit {
   events: any[] = [];
 
   constructor(private eventService: EventService) {}
-
   ngOnInit() {
     this.loadEvents();
   }
 
-  loadEvents() {
-    this.eventService.getEvents().subscribe({
-      next: (data) => {
-        this.events = data;
-      },
-      error: (err) => {
-        console.error('❌ Gagal mengambil data event:', err);
-      }
-    });
-  }
+loadEvents() {
+  this.eventService.getEvents().subscribe({
+    next: (data) => {
+      console.log('✅ Data event:', data);
+      this.events = data;
+    },
+    error: (err) => {
+      console.error('❌ Gagal mengambil data event:', err);
+    }
+  });
+}
 }

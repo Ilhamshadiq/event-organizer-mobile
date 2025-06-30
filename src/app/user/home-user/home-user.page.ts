@@ -14,17 +14,19 @@ import { Router } from '@angular/router';
 export class HomeUserPage implements OnInit {
   events: any[] = [];
   filteredEvents: any[] = [];
-
+  
   constructor(
-  private eventService: EventService,
+    private eventService: EventService,
   private alertCtrl: AlertController,
   private authService: AuthService,
   private router: Router
-  ) {}
+) {}
 
-  ngOnInit() {
-    this.loadEvents();
-  }
+showSearch = false;
+
+ngOnInit() {
+  this.loadEvents();
+}
 
   loadEvents() {
     this.eventService.getEvents().subscribe({

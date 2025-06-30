@@ -52,3 +52,13 @@ ion-toolbar {
   margin: 4px 0;
   color: #444;
 }
+.empty-state {
+  text-align: center;
+  margin-top: 100px;
+  color: #666;
+}
+
+.empty-state ion-icon {
+  font-size: 60px;
+  margin-bottom: 16px;
+}

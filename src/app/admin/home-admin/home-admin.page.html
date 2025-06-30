@@ -1,5 +1,15 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-title color="light"> 🎗️ KELOLA EO EVENT</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="showSearch = !showSearch">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Searchbar muncul jika showSearch bernilai true -->
+  <ion-toolbar *ngIf="showSearch">
     <ion-searchbar
       placeholder="Cari event..."
       (ionInput)="filterEvent($event)"
@@ -8,33 +18,47 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true" class="ion-padding">
 
   <!-- Tombol tambah event -->
-  <ion-button expand="block" color="success" class="mb-3" [routerLink]="['/admin/add-event']">
+  <ion-button expand="block" color="success" class="ion-margin-bottom" [routerLink]="['/admin/add-event']">
     ➕ Tambah Event
   </ion-button>
 
-  <!-- Daftar event -->
-<div class="admin-card" *ngFor="let event of filteredEvents">
-  <h2 class="event-title">{{ event.nama }}</h2>
-  <p><strong>Tanggal:</strong> {{ event.waktu_mulai | date:'dd MMMM yyyy' }}</p>
-  <p><strong>Kuota:</strong> {{ event.kuota }} Peserta</p>
-  <p><strong>Lokasi:</strong> {{ event.lokasi }}</p>
+  <!-- Jika tidak ada event -->
+  <div *ngIf="filteredEvents.length === 0" class="empty-state">
+    <ion-icon name="calendar-outline" size="large" color="medium"></ion-icon>
+    <p>Tidak ada event ditemukan.</p>
+  </div>
 
-<div class="button-group">
-  <ion-button size="small" fill="outline" color="primary" [routerLink]="['/event-detail', event.id]">
-    📄 Lihat
-  </ion-button>
+  <!-- List Event -->
+  <ion-card *ngFor="let event of filteredEvents">
 
-  <ion-button size="small" fill="outline" color="warning" [routerLink]="['/admin/edit-event', event.id]">
-    ✏️ Edit
-  </ion-button>
+    <ion-card-header>
+      <ion-card-title>{{ event.nama }}</ion-card-title>
+      <ion-card-subtitle>{{ event.lokasi }} – {{ event.waktu_mulai | date:'dd MMM yyyy' }}</ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-button size="small" fill="outline" color="danger" (click)="confirmDelete(event.id)">
-    🗑️ Hapus
-  </ion-button>
-</div>
+    <ion-card-content>
+      <p><strong>Kuota:</strong> {{ event.kuota }} peserta</p>
 
-<!-- Footer -->
-<app-footer-navbar></app-footer-navbar>
+      <ion-button size="default" expand="block" color="primary" [routerLink]="['/event-detail', event.id]">
+        📄 Lihat Detail
+      </ion-button>
+
+      <ion-button size="default" expand="block" color="warning" [routerLink]="['/admin/edit-event', event.id]">
+        ✏️ Edit Event
+      </ion-button>
+
+      <ion-button size="default" expand="block" color="danger" (click)="confirmDelete(event.id)">
+        🗑️ Hapus Event
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <app-footer-navbar></app-footer-navbar>
+</ion-footer>

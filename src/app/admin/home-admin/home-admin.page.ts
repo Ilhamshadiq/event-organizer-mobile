@@ -28,6 +28,8 @@ export class HomeAdminPage implements OnInit {
       }
     });
   }
+  showSearch = false;
+
 
   filterEvent(event: any) {
     const searchTerm = event.target.value?.toLowerCase() || '';
@@ -35,6 +37,10 @@ export class HomeAdminPage implements OnInit {
       ev.nama.toLowerCase().includes(searchTerm)
     );
   }
+  getImageUrl(filename: string): string {
+  return 'http://127.0.0.1:8000/storage/' + filename;
+}
+
 confirmDelete(eventId: number) {
   if (confirm('Yakin ingin menghapus event ini?')) {
     this.eventService.deleteEvent(eventId).subscribe({

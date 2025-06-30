@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
 import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart-js',
@@ -16,14 +17,22 @@ export class CartJsPage implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+     private route: ActivatedRoute 
   ) {
     Chart.register(...registerables);
   }
 
-  ngOnInit(): void {
-    this.loadEventListFromDatabase();
+ngOnInit(): void {
+  const eventIdParam = this.route.snapshot.paramMap.get('id');
+  if (eventIdParam) {
+    this.selectedEventId = Number(eventIdParam);
+    this.fetchStatistik(this.selectedEventId);
+  } else {
+    console.error('❌ Event ID tidak ditemukan di URL.');
   }
+}
+
 goBack() {
   this.navCtrl.back(); // kembali ke halaman sebelumnya dalam stack
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from 'src/app/service/event/event.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-event',
@@ -19,8 +20,13 @@ export class EditEventPage implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private eventService: EventService
+    private eventService: EventService,
+    private navCtrl: NavController
   ) {}
+
+  goBack() {
+    this.navCtrl.back();
+  }
 
   ngOnInit() {
     this.eventId = +this.route.snapshot.paramMap.get('id')!;

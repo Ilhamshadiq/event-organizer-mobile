@@ -9,9 +9,17 @@
     <div class="event-card" *ngFor="let event of events">
       <h2>{{ event.nama }}</h2>
       <p>{{ event.waktu_mulai | date: 'dd MMMM yyyy' }}</p>
-      <ion-button [routerLink]="['/admin/cart-js', event.id]" expand="block" size="small">
+      <ion-button 
+        *ngIf="event?.id" 
+        [routerLink]="['/admin/cart-js', event.id]" 
+        expand="block" 
+        size="small">
         Detail
       </ion-button>
+
+      <ion-text *ngIf="!event?.id" color="danger">
+        ID tidak tersedia
+      </ion-text>
     </div>
   </div>
 
