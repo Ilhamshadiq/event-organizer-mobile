@@ -27,7 +27,7 @@ export class HistoryEventPage implements OnInit {
     });
   }
 lihatSertifikat(registrationId: number): void {
-  const url = `http://127.0.0.1:8000/api/generate-sertifikat/${registrationId}`;
+  const url = `https://api.event-organizer.my.id/api/generate-sertifikat/${registrationId}`;
   window.open(url, '_blank'); // buka tab baru
 }
 logout() {

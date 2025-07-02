@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class EventService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'https://api.event-organizer.my.id/api';
   constructor(private http: HttpClient) {}
 
   /**
@@ -45,7 +45,7 @@ getMyTickets(): Observable<any> {
     'Accept': 'application/json'
   });
 
-  return this.http.get<any>('http://127.0.0.1:8000/api/event/my-events', { headers });
+  return this.http.get<any>('https://api.event-organizer.my.id/api/event/my-events', { headers });
 }
 
  getMyAttendedEvents(): Observable<any> {
@@ -106,7 +106,7 @@ getPesertaHTMLByEventId(eventId: number): Observable<any[]> {
     Authorization: `Bearer ${token}`
   };
 
-  return this.http.get<any>(`http://localhost:8000/api/events/peserta-berbayar/${eventId}`, { headers })
+  return this.http.get<any>(`https://api.event-organizer.my.id/api/events/peserta-berbayar/${eventId}`, { headers })
     .pipe(map(res => res.data)); // 👈 ambil hanya data[]
 }
 konfirmasiPembayaran(participantId: number): Observable<any> {
@@ -115,7 +115,7 @@ konfirmasiPembayaran(participantId: number): Observable<any> {
     Authorization: `Bearer ${token}`
   };
 
-  return this.http.put(`http://localhost:8000/api/participants/${participantId}/pembayaran-done`, {}, { headers });
+  return this.http.put(`https://api.event-organizer.my.id/api/participants/${participantId}/pembayaran-done`, {}, { headers });
 }
 // Ambil event berbayar khusus dropdown filtering
 getEventBerbayar(): Observable<any[]> {

@@ -60,7 +60,7 @@ goBack() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get<any>(`http://127.0.0.1:8000/api/participants/${eventId}/statistic`, { headers })
+    this.http.get<any>(`https://api.event-organizer.my.id/api/participants/${eventId}/statistic`, { headers })
       .subscribe({
         next: (response) => {
           if (response.success) {

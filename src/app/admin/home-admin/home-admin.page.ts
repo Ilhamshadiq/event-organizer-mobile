@@ -38,7 +38,7 @@ export class HomeAdminPage implements OnInit {
     );
   }
   getImageUrl(filename: string): string {
-  return 'http://127.0.0.1:8000/storage/' + filename;
+  return 'https://api.event-organizer.my.id/storage/' + filename;
 }
 
 confirmDelete(eventId: number) {
